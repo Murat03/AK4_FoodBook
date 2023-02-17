@@ -6,6 +6,8 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.muratipek.ak4_foodbook.databinding.FoodRecyclerRowBinding
 import com.muratipek.ak4_foodbook.model.Food
+import com.muratipek.ak4_foodbook.util.didPlaceholder
+import com.muratipek.ak4_foodbook.util.downloadImage
 import com.muratipek.ak4_foodbook.view.FoodListFragmentDirections
 
 class FoodRecyclerAdapter(val foodList: ArrayList<Food>): RecyclerView.Adapter<FoodRecyclerAdapter.FoodHolder>() {
@@ -29,8 +31,8 @@ class FoodRecyclerAdapter(val foodList: ArrayList<Food>): RecyclerView.Adapter<F
         holder.itemView.setOnClickListener {
             val action = FoodListFragmentDirections.actionFoodListFragmentToFoodDetailFragment()
             Navigation.findNavController(it).navigate(action)
-
         }
+        holder.binding.imageView.downloadImage(foodList.get(position).image, didPlaceholder(holder.itemView.context))
     }
     fun updateFoodList(newFoodList: List<Food>){
         foodList.clear()

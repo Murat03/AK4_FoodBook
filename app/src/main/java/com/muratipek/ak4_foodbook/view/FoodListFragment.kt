@@ -35,12 +35,25 @@ class FoodListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //Extension
+        /*
+        var myString = "Murat"
+        myString.myString(myString)
+         */
 
         viewModel = ViewModelProvider(this).get(FoodListViewModel::class.java)
         viewModel.refreshData()
 
         binding.foodListRecyclerView.layoutManager = LinearLayoutManager(context)
         binding.foodListRecyclerView.adapter = recyclerFoodAdapter
+
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            binding.foodLoading.visibility = View.VISIBLE
+            binding.foodErrorMessage.visibility = View.GONE
+            binding.foodListRecyclerView.visibility = View.GONE
+            viewModel.refreshData()
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
 
         observeLiveData()
     }
