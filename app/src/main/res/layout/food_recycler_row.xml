@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="food"
+            type="com.muratipek.ak4_foodbook.model.Food" />
+        <variable
+            name="listener"
+            type="com.muratipek.ak4_foodbook.adapter.FoodClickListener" />
+    </data>
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="150dp"
     android:orientation="horizontal">
+    <TextView
+        android:id="@+id/food_uuid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:text="@{String.valueOf(food.uuid)}">
+
+    </TextView>
 
     <ImageView
         android:id="@+id/imageView"
@@ -12,7 +28,7 @@
         android:layout_height="match_parent"
         android:layout_margin="3dp"
         android:layout_weight="2"
-        app:srcCompat="@drawable/ic_launcher_background">
+        android:downloadImage="@{food.image}">
 
     </ImageView>
 <LinearLayout
@@ -26,7 +42,7 @@
         android:id="@+id/foodName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Food Name"
+        android:text="@{food.name}"
         android:layout_margin="5dp"
         android:textSize="20sp"
         android:textStyle="bold">
@@ -36,7 +52,7 @@
         android:id="@+id/foodCalori"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Food Calori"
+        android:text="@{food.calori}"
         android:layout_margin="5dp"
         android:textSize="18sp">
 

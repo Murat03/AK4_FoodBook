@@ -3,6 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="selectedFood"
+            type="com.muratipek.ak4_foodbook.model.Food" />
+    </data>
+
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,7 +21,7 @@
         android:minHeight="200dp"
         android:maxHeight="300dp"
         android:scaleType="fitCenter"
-        app:srcCompat="@drawable/ic_launcher_background"
+        android:downloadImage="@{selectedFood.image}"
         android:layout_alignParentTop="true"
         android:layout_margin="10dp">
 
@@ -25,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/foodImage"
-        android:text="Food Name"
+        android:text="@{selectedFood.name}"
         android:textSize="20sp"
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
@@ -37,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/foodName"
-        android:text="Food Calori"
+        android:text="@{selectedFood.calori}"
         android:textSize="18sp"
         android:layout_centerHorizontal="true"
         android:layout_margin="7dp">
@@ -48,7 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/foodCalori"
-        android:text="Food Carbohydrate"
+        android:text="@{selectedFood.carbohydrate}"
         android:textSize="18sp"
         android:layout_centerHorizontal="true"
         android:layout_margin="7dp">
@@ -59,7 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/foodCarbohydrate"
-        android:text="Food Protein"
+        android:text="@{selectedFood.protein}"
         android:textSize="18sp"
         android:layout_centerHorizontal="true"
         android:layout_margin="7dp">
@@ -70,7 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/foodProtein"
-        android:text="Food Fat"
+        android:text="@{selectedFood.fat}"
         android:textSize="18sp"
         android:layout_centerHorizontal="true"
         android:layout_margin="7dp">

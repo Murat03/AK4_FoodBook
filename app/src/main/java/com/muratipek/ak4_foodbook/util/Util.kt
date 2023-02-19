@@ -2,6 +2,7 @@ package com.muratipek.ak4_foodbook.util
 
 import android.content.Context
 import android.widget.ImageView
+import androidx.databinding.BindingAdapter
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -26,4 +27,8 @@ fun didPlaceholder(context: Context) : CircularProgressDrawable{
         centerRadius = 40f
         start()
     }
+}
+@BindingAdapter("android:downloadImage")
+fun downloadImage(imageView: ImageView, url : String?){
+    imageView.downloadImage(url, didPlaceholder(imageView.context))
 }
